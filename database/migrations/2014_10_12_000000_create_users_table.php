@@ -18,7 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('nic') -> nullable();
             $table->string('name');
             $table->string('Address');
-            $table->string('City');
+            $table->string('Contact_number');
+            $table->string('Vehicle_type') -> nullable();
+            $table->string('Vehicle_brand') -> nullable();
+            $table->string('Vehicle_color') -> nullable();
+            $table->string('Vehicle_number') -> nullable();
+            $table->string('Numberofpassenger') -> nullable();
             $table->string('email')->unique();
             $table->enum('role', ['company', 'driver','vehicle'])->default('company');
             $table->timestamp('email_verified_at')->nullable();

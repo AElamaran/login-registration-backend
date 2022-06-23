@@ -21,7 +21,12 @@ class AuthController extends Controller
             'nic'=>'string',
             'name'=>'required|string',
             'Address'=>'required|string',
-            'City'=>'required|string',
+            'Contact_number'=>'required|string',
+            'Vehicle_type' =>'string',
+            'Vehicle_brand' => 'string',
+            'Vehicle_color' => 'string',
+            'Vehicle_number' => 'string',
+           'Numberofpassenger' => 'string',
             'role'=>'required',
             'email'=>'required|string|unique:users,email',
             'password'=>'required|string|confirmed'
@@ -33,8 +38,13 @@ class AuthController extends Controller
             'nic'=>$fields['nic'] ?? null,
             'name'=>$fields['name'],
             'email'=>$fields['email'],
+            'Vehicle_type'=>$fields['Vehicle_type'] ?? null,
+            'Vehicle_brand'=>$fields['Vehicle_brand'] ?? null,
+            'Vehicle_color'=>$fields['Vehicle_color'] ?? null,
+            'Vehicle_number'=>$fields['Vehicle_number'] ?? null,
+            'Numberofpassenger'=>$fields['Numberofpassenger'] ?? null,
             'Address'=>$fields['Address'],
-            'City'=>$fields['City'],
+            'Contact_number'=>$fields['Contact_number'],
             'role'=>$fields['role'],
             'password'=>bcrypt($fields['password'])
         ]);
@@ -51,33 +61,7 @@ class AuthController extends Controller
         return response($response,201);
     }
 
-    public function companyregister(Request $request){
-        $fields= $request->validate([
-            'name'=>'required|string',
-            'Address'=>'required|string',
-            'City'=>'required|string',
-            'email'=>'required|string|unique:users,email',
-            'password'=>'required|string|confirmed'
-        ]);
 
-        $user=Company::create([
-            'name'=>$fields['name'],
-            'Address'=>$fields['Address'],
-            'City'=>$fields['City'],
-            'email'=>$fields['email'],
-            'password'=>bcrypt($fields['password'])
-        ]);
-
-
-
-        $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response=[
-            'user'=>$user,
-            'token'=>$token
-        ];
-        return response($response,201);
-    }
 
 
     public function login(Request $request){
