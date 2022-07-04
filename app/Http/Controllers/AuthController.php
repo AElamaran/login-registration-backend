@@ -18,7 +18,7 @@ class AuthController extends Controller
 
 
         $fields = $request->validate([
-            'nic'=>'string',
+            'nic'=>'string|unique:users',
             'name'=>'required|string',
             'Address'=>'required|string',
             'Contact_number'=>'required|string',
@@ -86,7 +86,7 @@ class AuthController extends Controller
         $token = $user->createToken('myapptoken')->plainTextToken;
 
         $response=[
-            'user'=>$user,
+          'user'=>$user,
             'token'=>$token
         ];
         return response($response,201);

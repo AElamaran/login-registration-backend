@@ -48,13 +48,11 @@ Route::get('/products/search/{name}',[ProductController::class,'search']);
 //Route::resource('products',ProductController::class);
 //Route::get('products/search/{name}',[ProductController::class,'search']);
 Route::group(['middleware'=>['auth:sanctum']], function () {
-//    Route::post('/registercompany',[CompanyController::class,'store']);
-//    Route::put('/registercompany/{id}',[CompanyController::class,'update']);
-//    Route::delete('/registercompany',[CompanyController::class,'destroy']);
-    Route::get('/products',[ProductController::class,'index'])->middleware('CheckCompanyUser');
-    Route::post('/products',[ProductController::class,'store'])->middleware('CheckCompanyUser');
-    Route::put('/products{id}',[ProductController::class,'update']);
-    Route::delete('/products/{id}',[ProductController::class,'destroy']);
+
+//     Route::get('/products',[ProductController::class,'index'])->middleware('CheckCompanyUser');
+//     Route::post('/products',[ProductController::class,'store'])->middleware('CheckCompanyUser');
+//     Route::put('/products{id}',[ProductController::class,'update']);
+//     Route::delete('/products/{id}',[ProductController::class,'destroy']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
 

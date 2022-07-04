@@ -26,6 +26,7 @@ class ForgotPasswordController extends Controller
 
         $response = [
             'response' => [trans($status)]
+
         ];
 
         return response($response, 404);

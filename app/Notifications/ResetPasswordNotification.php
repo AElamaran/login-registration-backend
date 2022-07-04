@@ -43,10 +43,10 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You are receiving this email because we received a password reset request for your account.')
-                    ->line('Here is the code copy and paste it')
+                    ->line('Password reset Token is given here for reset password.')
+                    ->line('Here is the Token, copy the token and use in the reset password screen')
                     ->line($this->token)
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you');
     }
 
     /**
